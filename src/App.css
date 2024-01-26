@@ -1,0 +1,6 @@
+@import url('https://db.onlinewebfonts.com/c/bab15956435794e3d48309ddf0700b4c?family=Filson+Soft');
+@import url('https://db.onlinewebfonts.com/c/fb53f71960b6379170d01dd82e92b936?family=PF+Agora+Slab+Pro+Regular');
+
+label > span.text-red-500 {
+  display: none;
+}
