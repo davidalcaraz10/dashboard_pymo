@@ -7,7 +7,6 @@ import AllocateSupplies from "../components/dashboard/AllocateSuppliesModal";
 
 export default function Hospitals() {
   const [allHospitalsInfo, setAllHospitalInfo] = useState({ data: [] });
-  console.log("🚀 ~ Hospitals ~ allHospitalsInfo:", allHospitalsInfo)
   const [inventoryData, setInventoryData] = useState([]);
   const [openDropdownId, setOpenDropdownId] = useState(null);
   const [activeHospitalId, setActiveHospitalId] = useState(null);
@@ -63,7 +62,6 @@ export default function Hospitals() {
 
   const toggleDropdown = (hospitalId) => {
     if (openDropdownId === hospitalId) {
-      console.log('se ejecuta esta funcion ');
       setOpenDropdownId(null);
     } else {
       setOpenDropdownId(hospitalId);
