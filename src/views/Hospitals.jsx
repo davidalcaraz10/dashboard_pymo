@@ -4,6 +4,7 @@ import getHospitals from "../services/getHospitals";
 import getInventory from '../services/getInventory';
 import getAssignments from "../services/getAssignments";
 import AllocateSupplies from "../components/dashboard/AllocateSuppliesModal";
+import Filter from "../components/dashboard/Filter";
 
 export default function Hospitals() {
   const [allHospitalsInfo, setAllHospitalInfo] = useState({ data: [] });
@@ -14,6 +15,8 @@ export default function Hospitals() {
   const [openAllocateModal, setOpenAllocateModal] = useState(null);
   const [actualHospital, setActualHospital] = useState({});
   const [assignments, setAssignments] = useState([]);
+  const [filterText, setFilterText] = useState('');
+  const [filterStatus, setFilterStatus] = useState('');
 
   useEffect (() => {
     getAllHospitals();
@@ -59,6 +62,34 @@ export default function Hospitals() {
   
     setHospitalViability(viabilityData);
   };
+
+  const handleFilterChange = (text) => {
+    setFilterText(text.toLowerCase());
+  };
+
+  const handleStatusChange = (status) => {
+    setFilterStatus(status);
+  };
+
+  // Filtro de hospitales 
+  const filteredHospitals = allHospitalsInfo.data.filter(hospital => {
+    const textMatch = hospital.name.toLowerCase().includes(filterText) || 
+                      hospital.address.toLowerCase().includes(filterText);
+    let statusMatch = true;
+    
+    if (filterStatus) {
+      const viability = hospitalViability.find(v => v.hospital_id === hospital.hospital_id) || {};
+      if (filterStatus === 'assigned') {
+        statusMatch = assignments[hospital.hospital_id];
+      } else if (filterStatus === 'viable') {
+        statusMatch = viability.isViable && !assignments[hospital.hospital_id];
+      } else if (filterStatus === 'insufficient') {
+        statusMatch = !viability.isViable;
+      }
+    }
+
+    return textMatch && statusMatch;
+  });
 
   const toggleDropdown = (hospitalId) => {
     if (openDropdownId === hospitalId) {
@@ -197,11 +228,20 @@ export default function Hospitals() {
         </p>
       </div>
 
+      <div className="flex justify-start pl-24 pt-2">
+        <Filter 
+          onFilterChange={handleFilterChange} 
+          filterStatus={filterStatus}
+          onStatusChange={handleStatusChange}
+        />
+      </div>
+
       <div className="pl-24 w-full mt-6">
         <div className="bg-slate-100 rounded-md flex flex-col justify-center w-11/12 p-6">
-          {allHospitalsInfo.data.map(renderHospitalRow)}
+          {filteredHospitals.map(hospital => renderHospitalRow(hospital))}
         </div>
       </div>
+
       {openAllocateModal && (
         <div className="fixed inset-0 bg-gray-600 bg-opacity-50 z-50 flex justify-center items-center">
           <AllocateSupplies 
