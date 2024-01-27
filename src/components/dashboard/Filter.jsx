@@ -12,7 +12,7 @@ export default function Filter({ onFilterChange, filterStatus, onStatusChange })
         onChange={(e) => onStatusChange(e.target.value)}
         className="ml-2 rounded-md text-slate-500 py-1"
       >
-        <option value="">Todos los estados</option>
+        <option value="">Todos los status</option>
         <option value="assigned">Asignado</option>
         <option value="viable">Viable</option>
         <option value="insufficient">Recursos insuficientes</option>
