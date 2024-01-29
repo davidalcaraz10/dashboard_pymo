@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Disclosure } from '@headlessui/react';
 import LoginForm from "./LoginForm";
+import Pymologo from '../../assets/PYMO3_NEGRO.png'
 
 export default function Navbar() {
   const [loginModal, setLoginModal] = useState(false);
@@ -27,7 +28,7 @@ export default function Navbar() {
               <Link href="/">
                 <span className="flex items-center">
                   <span>
-                    <img src="/src/assets/logo_nombre.svg" alt="PYMO logo" width="50" height="50" className="w-28" />                    
+                    <img src={Pymologo} alt="PYMO logo" width="50" height="50" className="w-28" />                    
                   </span>
                 </span>
               </Link>
@@ -58,8 +59,8 @@ export default function Navbar() {
               <Disclosure.Panel className="flex flex-wrap w-full my-5 lg:hidden">
                 <>
                   {navigation.map((item, index) => (
-                    <Link key={index} href="/" className="w-full px-4 py-2 ml-2 text-gray-800 rounded-md hover:text-indigo-500 focus:text-indigo-500 focus:bg-indigo-100 focus:outline-none">
-                        {item}
+                    <Link key={index} to={item.url} className="w-full px-4 py-2 ml-2 text-gray-800 rounded-md hover:text-indigo-500 focus:text-indigo-500 focus:bg-indigo-100 focus:outline-none">
+                        {item.title}
                     </Link>
                   ))}
                   <button onClick={openLogin} className="w-2/3 m-auto px-6 py-2 mt-3 text-center text-white font-bold custom-gradient rounded-md lg:ml-5">         

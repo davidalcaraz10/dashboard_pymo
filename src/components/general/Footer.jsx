@@ -1,3 +1,8 @@
+import Pymologo from '../../assets/PYMO3_NEGRO.png';
+import Facebook from '../../assets/facebook.png';
+import Instagram from '../../assets/instagram.png';
+import Twitter from '../../assets/twitter.png';
+import Linkedin from '../../assets/linkedin.png';
 
 export default function Footer() {
 
@@ -6,20 +11,20 @@ export default function Footer() {
       <div className="flex flex-col items-center">
         <div className="flex flex-col lg:flex-row justify-center items-start px-12 mb-10">
           <div className="flex flex-col w-1/3">
-            <img src="/src/assets/logo_nombre.svg" alt="PYMO logo" width="50" height="50" className="w-28" />                    
+            <img src={Pymologo} alt="PYMO logo" width="50" height="50" className="w-28" />                    
             <p className="font-agora w-[330px] md:w-[85%]">
               La solución #1 para crear un impacto corporativo inteligente, sostenible y trazable.
             </p>
             <h3 className="text-lg font-filson-soft text-[#858585] mt-4 md:mt-0">MÁS SOBRE NOSOTROS</h3>
             <div className="flex">
-              <a href="https://www.facebook.com/pymohub" target="_blank"><img src="/src/assets/facebook.png" alt="facebook logo" width="30" height="30" className="w-8 mr-3"/></a>
-              <a href="https://www.instagram.com/pymohub/" target="_blank"><img src="/src/assets/instagram.png" alt="instagram logo" width="30" height="30" className="w-8 mr-3"/></a>
-              <a href="https://twitter.com/pymohub?lang=es" target="_blank"><img src="/src/assets/twitter.png" alt="twitter logo" width="30" height="30" className="w-8 mr-3"/></a>
+              <a href="https://www.facebook.com/pymohub" target="_blank"><img src={Facebook} alt="facebook logo" width="30" height="30" className="w-8 mr-3"/></a>
+              <a href="https://www.instagram.com/pymohub/" target="_blank"><img src={Instagram} alt="instagram logo" width="30" height="30" className="w-8 mr-3"/></a>
+              <a href="https://twitter.com/pymohub?lang=es" target="_blank"><img src={Twitter} alt="twitter logo" width="30" height="30" className="w-8 mr-3"/></a>
               <a 
                 href="https://www.linkedin.com/company/entrelazando-m%C3%A9xico/?trk=public_profile_topcard-current-company&originalSubdomain=mx" 
                 target="_blank"
               >
-                <img src="/src/assets/linkedin.png" alt="linkedin logo" width="30" height="30" className="w-8"/>
+                <img src={Linkedin} alt="linkedin logo" width="30" height="30" className="w-8"/>
               </a>
             </div>
           </div>

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import FormHos from "./FormHos";
+import Vacuna from '../../assets/vacuna.jpeg'
 
 export default function Hero() {
   const [modalOpen, setModalOpen] = useState(false);
@@ -31,7 +32,7 @@ export default function Hero() {
       )}
 
       <div className="flex justify-center items-center w-3/4 md:w-2/4 mt-7 md:mt-0">
-        <img src="/src/assets/vacuna.jpeg" alt="vacunación" className="rounded-lg w-[80vw] lg:w-[35vw]"/>
+        <img src={Vacuna} alt="vacunación" className="rounded-lg w-[80vw] lg:w-[35vw]"/>
       </div>
     </section>
   )
