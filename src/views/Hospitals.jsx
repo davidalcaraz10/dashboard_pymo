@@ -214,21 +214,21 @@ export default function Hospitals() {
   // Render del componente
   return (
     <section className="flex flex-col items-start md:pl-64 pt-16 h-screen overflow-y-auto">
-      <div className="flex justify-start pl-24">
+      <div className="flex justify-start pl-12 md:pl-24">
         <h1 className="text-black font-filson-soft text-3xl">Solicitudes de Hospitales</h1>
       </div>
-      <div className="flex justify-start pl-24 pt-2">
+      <div className="flex justify-center md:justify-start pl-8 md:pl-24 pt-2">
         <p className="text-gray-400">
           Las solicitudes se muestran conforme al mayor número de casos registrados el último mes.
         </p>
       </div>
-      <div className="flex justify-start pl-24 pt-2">
+      <div className="flex justify-center md:justify-start pl-8 md:pl-24 pt-2">
         <p className="text-gray-400 text-sm">
           *Las refrencias 'Viable' o 'Recursos insuficientes' indican si se cuenta con la cantidad de suministros suficientes o no de acuerdo a la necesidad de cada hospital.
         </p>
       </div>
 
-      <div className="flex justify-start pl-24 pt-2">
+      <div className="flex justify-center md:justify-start pl-8 md:pl-24 pt-2">
         <Filter 
           onFilterChange={handleFilterChange} 
           filterStatus={filterStatus}
@@ -236,7 +236,7 @@ export default function Hospitals() {
         />
       </div>
 
-      <div className="pl-24 w-full mt-6">
+      <div className="md:pl-24 w-full mt-6">
         <div className="bg-slate-100 rounded-md flex flex-col justify-center w-11/12 p-6">
           {filteredHospitals.map(hospital => renderHospitalRow(hospital))}
         </div>

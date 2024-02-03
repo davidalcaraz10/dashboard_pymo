@@ -28,45 +28,56 @@ export default function Sidebar() {
 
   return (
     <>
-      <aside id="default-sidebar" className="absolute top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0" aria-label="Sidebar">
-        <div className="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
-            <ul className="space-y-2 font-medium">
-              <li>
-                <Link to={'/dashboard'}>
-                  <img 
-                    src={PymoLogo}
-                    alt="PYMO logo"
-                    className="h-32 m-auto"
-                  />
-                </Link>
-              </li>
-              {links.map((link) => {
-                const LinkIcon = link.icon;
-                const isActive = location.pathname === link.href;
-                return(
-                  <Link
-                    key={link.name}
-                    to={link.href}
-                    className={`flex items-center p-2 rounded-lg dark:text-white group 
-                      ${isActive ? 'custom-gradient text-white' : 'text-gray-900 hover:bg-gray-100 dark:hover:bg-gray-700'}`}
-                  >
-                    <LinkIcon className="h-5 w-5 text-gray-500" aria-hidden="true"/>
-                    <span className="ms-3 font-filson-soft">{link.name}</span>
+      {/* Sidebar para pantallas grandes */}
+      <aside className="hidden md:block absolute top-0 left-0 z-40 w-64 h-screen bg-gray-800 overflow-y-auto">
+        <div className="px-3 py-4">
+          <Link to={'/dashboard'}>
+            <img src={PymoLogo} alt="PYMO logo" className="h-32 m-auto"/>
+          </Link>
+          <ul className="mt-4 space-y-2">
+            {links.map((link) => {
+              const isActive = location.pathname === link.href;
+              const LinkIcon = link.icon;
+              return (
+                <li key={link.name}>
+                  <Link to={link.href} className={`flex items-center p-2 text-base font-medium rounded-lg dark:text-white ${isActive ? 'bg-gray-900' : 'text-gray-400 hover:bg-gray-700'}`}>
+                    <LinkIcon className="mr-4 flex-shrink-0 h-6 w-6" aria-hidden="true"/>
+                    {link.name}
                   </Link>
-                )
-              })}
-            </ul>
-            <div className="absolute bottom-2 w-11/12">
-              <button onClick={handleLogout} 
-                className="flex w-full items-center p-2 text-gray-900 rounded-lg dark:text-white 
-              hover:bg-gray-100 dark:hover:bg-gray-700 group"
-              >
-                <ArrowLeftOnRectangleIcon className="h-5 w-5 text-gray-500"/>
-                <span className="ms-3">Cerrar sesión</span>
-              </button>
-            </div>
+                </li>
+              );
+            })}
+          </ul>
+          <div className="absolute bottom-4 w-full px-3">
+            <button onClick={handleLogout} className="flex items-center justify-center w-full p-2 text-base font-medium text-left text-gray-400 rounded-lg hover:bg-gray-700 dark:text-white">
+              <ArrowLeftOnRectangleIcon className="mr-4 h-6 w-6" aria-hidden="true"/>
+              Cerrar sesión
+            </button>
+          </div>
         </div>
       </aside>
+
+      {/* Navbar para pantallas pequeñas */}
+      <div className="md:hidden fixed top-0 left-0 z-50 w-full bg-gray-800">
+        <div className="flex items-center justify-between px-4">
+          <Link to={'/dashboard'}>
+            <img src={PymoLogo} alt="PYMO logo" className="h-16"/>
+          </Link>
+          <nav className="flex">
+            {links.map((link) => {
+              const LinkIcon = link.icon;
+              return (
+                <Link key={link.name} to={link.href} className="px-3 py-2 rounded-lg text-gray-400 hover:bg-gray-700 hover:text-white">
+                  <LinkIcon className="h-6 w-6" aria-hidden="true"/>
+                </Link>
+              );
+            })}
+            <button onClick={handleLogout} className="ml-3 p-2 rounded-lg text-gray-400 hover:bg-gray-700 hover:text-white">
+              <ArrowLeftOnRectangleIcon className="h-6 w-6" aria-hidden="true"/>
+            </button>
+          </nav>
+        </div>
+      </div>
     </>
-  )
+  );
 }

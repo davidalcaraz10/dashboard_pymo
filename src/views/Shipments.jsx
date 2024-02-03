@@ -124,7 +124,7 @@ export default function Shipments() {
       .filter(hospital => hospitalAssignments[hospital.hospital_id] && hospitalAssignments[hospital.hospital_id].length > 0)
       .reverse();
     return (
-      <div className="pl-24 w-10/12 rounded-md bg-gray-50 my-4 mx-auto">
+      <div className="md:pl-24 w-10/12 rounded-md bg-gray-50 my-4 mx-auto">
         {hospitalsReverse.filter(hospital => hospitalAssignments[hospital.hospital_id] && hospitalAssignments[hospital.hospital_id].length > 0).map((hospital) => {
           const hospitalAssigns = hospitalAssignments[hospital.hospital_id];
           const hospitalHasShipment = hospitalsWithShipments.has(hospital.hospital_id);
@@ -180,7 +180,7 @@ export default function Shipments() {
   // Renderiza los envíos
   const renderShipments = () => {
     return Object.values(hospitalShipments).map(hospital => (
-      <div key={hospital.hospitalName} className="pl-24 w-10/12 rounded-md bg-gray-50 my-4 mx-auto">
+      <div key={hospital.hospitalName} className="md:pl-24 w-10/12 rounded-md bg-gray-50 my-4 mx-auto">
         <h2 className="text-xl font-filson-soft py-3 mr-4">{hospital.hospitalName}</h2>
         <table className="min-w-full divide-y divide-gray-300 rounded-md">
           <thead className="bg-gray-50">

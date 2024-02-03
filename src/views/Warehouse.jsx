@@ -56,7 +56,7 @@ export default function Warehouse() {
           </div>
         )}
 
-      <div className="pl-24 w-10/12 mt-12">
+      <div className="md:pl-24 w-10/12 mt-12 mx-auto">
         <table className="min-w-full divide-y divide-gray-300 rounded-md">
           <thead className="bg-gray-50">
             <tr>
